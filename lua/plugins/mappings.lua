@@ -13,8 +13,9 @@ return {
         -- ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
-        ["<Leader>s"] = {desc = "Search" },
+        ["<Leader>s"] = {desc = "Special" },
         ["<Leader>sg"] = { "<cmd>GrugFar<cr>", desc = "Grug Far" },
+        ["<Leader>so"] = { function() require("opencode").toggle() end, desc = "Opencode" },
       },
     },
   },
