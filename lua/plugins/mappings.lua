@@ -5,20 +5,29 @@ return {
   opts = {
     mappings = {
       -- first key is the mode
+      v = {
+        -- mappings seen under group name "Markdown"
+        ["<Leader>mi"] = { "<cmd>:'<,'>HeaderIncrease<cr>", desc = "Increase heading" },
+        ["<Leader>md"] = { "<cmd>:'<,'>HeaderDecrease<cr>", desc = "Decrease heading" },
+      },
       n = {
-        -- second key is the lefthand side of the map
-
-        -- navigate buffer tabs
-        -- ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        -- ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
-        -- mappings seen under group name "Buffer"
+        -- mappings seen in top level
         ["<Leader>E"] = { "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" },
 
         -- mappings seen under group name "Special"
         ["<Leader>s"] = {desc = "Special" },
         ["<Leader>sg"] = { "<cmd>GrugFar<cr>", desc = "Grug Far" },
         ["<Leader>so"] = { function() require("opencode").toggle() end, desc = "Opencode" },
+
+        -- mappings seen under group name "Markdown"
+        ["<Leader>m"] = {desc = "Markdown" },
+        ["<Leader>ms"] = { "<cmd>set conceallevel=0<cr>", desc = "Show markup" },
+        ["<Leader>mS"] = { "<cmd>set conceallevel=2<cr>", desc = "Hide markup" },
+        ["<Leader>mD"] = { "<cmd>:HeaderIncrease<cr>", desc = "Increase heading" },
+        ["<Leader>md"] = { "<cmd>:HeaderDecrease<cr>", desc = "Decrease heading" },
+        ["<Leader>mt"] = { "<cmd>:TableFormat<cr>", desc = "Format Table" },
+        ["<Leader>mi"] = { "<cmd>:InsertToc<cr>", desc = "Insert TOC" },
+        ["<Leader>mI"] = { "<cmd>:InsertNToc<cr>", desc = "Insert N-TOC" },
 
         -- mappings seen under group name "Terminal"
         -- toggle ocs terminal in vertical split (github.com/mclarkson/ocs)

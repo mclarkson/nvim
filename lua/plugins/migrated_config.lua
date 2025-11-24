@@ -136,4 +136,10 @@ return {
       },
     },
   },
+  {
+    'preservim/vim-markdown',
+    branch = 'master',
+    dependencies = {'godlygeek/tabular'},
+    config = function() vim.opt.conceallevel = 2 end,
+  },
 }
