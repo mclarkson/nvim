@@ -11,6 +11,9 @@ return {
         ["<Leader>md"] = { "<cmd>:'<,'>HeaderDecrease<cr>", desc = "Decrease heading" },
       },
       n = {
+        -- mappings seen under group name git
+        ["<Leader>gD"] = { "<cmd>Telescope git_file_history<cr>", desc = "Telescope Git History" },
+
         -- mappings seen in top level
         ["<Leader>E"] = { "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" },
 
