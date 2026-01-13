@@ -80,35 +80,35 @@ return {
     end
   },
   { 'EdenEast/nightfox.nvim' },
-  {
-    "NickvanDyke/opencode.nvim",
-    dependencies = {
-      -- Recommended for `ask()` and `select()`.
-      -- Required for `snacks` provider.
-      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
-    },
-    config = function()
-      ---@type opencode.Opts
-      vim.g.opencode_opts = {
-        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
-      }
-
-      -- Required for `opts.auto_reload`.
-      vim.o.autoread = true
-
-      -- Recommended/example keymaps.
-      vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
-      vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-      vim.keymap.set({ "n", "x" },    "ga", function() require("opencode").prompt("@this") end,                   { desc = "Add to opencode" })
-      vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
-      vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
-      vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
-      -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-      vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
-      vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
-    end,
-  },
+  -- {
+  --   "NickvanDyke/opencode.nvim",
+  --   dependencies = {
+  --     -- Recommended for `ask()` and `select()`.
+  --     -- Required for `snacks` provider.
+  --     ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+  --     { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+  --   },
+  --   config = function()
+  --     ---@type opencode.Opts
+  --     vim.g.opencode_opts = {
+  --       -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
+  --     }
+  --
+  --     -- Required for `opts.auto_reload`.
+  --     vim.o.autoread = true
+  --
+  --     -- Recommended/example keymaps.
+  --     vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
+  --     vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
+  --     vim.keymap.set({ "n", "x" },    "ga", function() require("opencode").prompt("@this") end,                   { desc = "Add to opencode" })
+  --     vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
+  --     vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
+  --     vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
+  --     -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
+  --     vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
+  --     vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
+  --   end,
+  -- },
   {
     'tadaa/vimade',
     opts = {
@@ -150,49 +150,85 @@ return {
         })
     end,
   },
+  -- {
+  --   "3rd/image.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "luarocks.nvim", -- Required to install image manipulation rocks
+  --   },
+  --   opts = {
+  --     backend = "kitty", -- Change to "ueberzug" if not using Kitty/WezTerm
+  --     integrations = {
+  --       markdown = {
+  --         enabled = true,
+  --         clear_in_insert_mode = false,
+  --         download_remote_images = true,
+  --         only_render_image_at_cursor = false,
+  --         filetypes = { "markdown", "vimwiki", "quarto" },
+  --       },
+  --     },
+  --     max_width = 100,
+  --     max_height = 12,
+  --     max_width_window_percentage = math.huge,
+  --     max_height_window_percentage = math.huge,
+  --     window_overlap_clear_enabled = true, -- prevents images from bleeding through windows
+  --     window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+  --   },
+  -- },
+  -- -- Helper to manage Lua dependencies for image.nvim
+  -- {
+  --   "vhyrro/luarocks.nvim",
+  --   priority = 1000,
+  --   config = true,
+  -- },
+  -- {
+  --   "HakonHarnes/img-clip.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     default = {
+  --       dir_path = "assets", -- Where to save images
+  --       prompt_for_file_name = false, -- Don't ask for a name, just auto-generate
+  --       use_absolute_path = false,
+  --     },
+  --   },
+  --   keys = {
+  --     { "<leader>ip", "<cmd>PasteImage<cr>", desc = "Paste image from clipboard" },
+  --   },
+  -- },
   {
-    "3rd/image.nvim",
-    event = "VeryLazy",
+    "duckdm/neowarrior.nvim",
+    event = "VeryLazy", -- Loads the plugin lazily to keep startup fast
     dependencies = {
-      "luarocks.nvim", -- Required to install image manipulation rocks
+      "nvim-telescope/telescope.nvim", -- Required for interactive picking
+      "folke/noice.nvim",            -- Optional: for a cleaner command-line UI
     },
-    opts = {
-      backend = "kitty", -- Change to "ueberzug" if not using Kitty/WezTerm
-      integrations = {
-        markdown = {
-          enabled = true,
-          clear_in_insert_mode = false,
-          download_remote_images = true,
-          only_render_image_at_cursor = false,
-          filetypes = { "markdown", "vimwiki", "quarto" },
+    config = function()
+      local nw = require("neowarrior")
+
+      nw.setup({
+        -- The report to use by default (e.g., "next", "minimal", "ready")
+        report = "next",
+
+        -- Default filter (e.g., only show tasks due soon or without a date)
+        filter = "(due.before:2d or due: )",
+
+        -- Optional: Directory-specific task configurations
+        -- Useful if you want different filters for work vs. personal folders
+        dir_setup = {
+          {
+            dir = vim.env.HOME .. "/projects/work",
+            filter = "project:Work",
+            mode = "tree",
+            expanded = true,
+          },
         },
-      },
-      max_width = 100,
-      max_height = 12,
-      max_width_window_percentage = math.huge,
-      max_height_window_percentage = math.huge,
-      window_overlap_clear_enabled = true, -- prevents images from bleeding through windows
-      window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-    },
-  },
-  -- Helper to manage Lua dependencies for image.nvim
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1000,
-    config = true,
-  },
-  {
-    "HakonHarnes/img-clip.nvim",
-    event = "VeryLazy",
-    opts = {
-      default = {
-        dir_path = "assets", -- Where to save images
-        prompt_for_file_name = false, -- Don't ask for a name, just auto-generate
-        use_absolute_path = false,
-      },
-    },
-    keys = {
-      { "<leader>ip", "<cmd>PasteImage<cr>", desc = "Paste image from clipboard" },
-  },
-}
+      })
+
+      -- KEYBINDINGS
+      -- Custom leader mappings to open the Taskwarrior dashboard
+      vim.keymap.set("n", "<leader>tw", function() nw.open_float() end, { desc = "Taskwarrior: Floating" })
+      vim.keymap.set("n", "<leader>tl", function() nw.open_left() end,  { desc = "Taskwarrior: Left Sidebar" })
+      vim.keymap.set("n", "<leader>tr", function() nw.open_right() end, { desc = "Taskwarrior: Right Sidebar" })
+    end,
+  }
 }
