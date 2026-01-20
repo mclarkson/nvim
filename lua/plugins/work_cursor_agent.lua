@@ -1,8 +1,11 @@
 -- For work only
 if vim.env.VIM_ENV ~= "work" then return {} end
 
+vim.keymap.set("i", "<C-L>", "<Plug>(copilot-accept-word)")
+vim.keymap.set("i", "<C-h>", "<Plug>(copilot-accept-line)")
+
 return {
-  { 'github/copilot.vim' },
+  { "github/copilot.vim" },
   {
     "felixcuello/neovim-cursor",
     cmd = { "CursorAgent", "CursorAgentNew" },

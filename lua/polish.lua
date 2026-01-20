@@ -10,19 +10,19 @@ local gfh_actions = require("telescope").extensions.git_file_history.actions
 -- vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
 -- vim.keymap.set('i', '<C-h>', '<Plug>(copilot-accept-line)')
 
-require("telescope").setup({
+require("telescope").setup {
   -- The rest of your telescope config here
 
   extensions = {
     git_file_history = {
       -- Keymaps inside the picker
       mappings = {
-          i = {
-              ["<C-g>"] = gfh_actions.open_in_browser,
-          },
-          n = {
-              ["<C-g>"] = gfh_actions.open_in_browser,
-          },
+        i = {
+          ["<C-g>"] = gfh_actions.open_in_browser,
+        },
+        n = {
+          ["<C-g>"] = gfh_actions.open_in_browser,
+        },
       },
 
       -- The command to use for opening the browser (nil or string)
@@ -30,6 +30,6 @@ require("telescope").setup({
       browser_command = nil,
     },
   },
-})
+}
 
-require("telescope").load_extension("git_file_history")
+require("telescope").load_extension "git_file_history"
