@@ -1,6 +1,5 @@
 ---@type LazySpec
 return {
-  { 'github/copilot.vim' },
   {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
@@ -20,6 +19,7 @@ return {
           })
     end
   },
+  { 'Saghen/blink.cmp' },
   { "aserowy/tmux.nvim",
     config = function() require("tmux").setup({
         copy_sync = {
@@ -80,35 +80,6 @@ return {
     end
   },
   { 'EdenEast/nightfox.nvim' },
-  -- {
-  --   "NickvanDyke/opencode.nvim",
-  --   dependencies = {
-  --     -- Recommended for `ask()` and `select()`.
-  --     -- Required for `snacks` provider.
-  --     ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-  --     { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
-  --   },
-  --   config = function()
-  --     ---@type opencode.Opts
-  --     vim.g.opencode_opts = {
-  --       -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
-  --     }
-  --
-  --     -- Required for `opts.auto_reload`.
-  --     vim.o.autoread = true
-  --
-  --     -- Recommended/example keymaps.
-  --     vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
-  --     vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-  --     vim.keymap.set({ "n", "x" },    "ga", function() require("opencode").prompt("@this") end,                   { desc = "Add to opencode" })
-  --     vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
-  --     vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
-  --     vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
-  --     -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-  --     vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
-  --     vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
-  --   end,
-  -- },
   {
     'tadaa/vimade',
     opts = {
@@ -150,51 +121,6 @@ return {
         })
     end,
   },
-  -- {
-  --   "3rd/image.nvim",
-  --   event = "VeryLazy",
-  --   dependencies = {
-  --     "luarocks.nvim", -- Required to install image manipulation rocks
-  --   },
-  --   opts = {
-  --     backend = "kitty", -- Change to "ueberzug" if not using Kitty/WezTerm
-  --     integrations = {
-  --       markdown = {
-  --         enabled = true,
-  --         clear_in_insert_mode = false,
-  --         download_remote_images = true,
-  --         only_render_image_at_cursor = false,
-  --         filetypes = { "markdown", "vimwiki", "quarto" },
-  --       },
-  --     },
-  --     max_width = 100,
-  --     max_height = 12,
-  --     max_width_window_percentage = math.huge,
-  --     max_height_window_percentage = math.huge,
-  --     window_overlap_clear_enabled = true, -- prevents images from bleeding through windows
-  --     window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-  --   },
-  -- },
-  -- -- Helper to manage Lua dependencies for image.nvim
-  -- {
-  --   "vhyrro/luarocks.nvim",
-  --   priority = 1000,
-  --   config = true,
-  -- },
-  -- {
-  --   "HakonHarnes/img-clip.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     default = {
-  --       dir_path = "assets", -- Where to save images
-  --       prompt_for_file_name = false, -- Don't ask for a name, just auto-generate
-  --       use_absolute_path = false,
-  --     },
-  --   },
-  --   keys = {
-  --     { "<leader>ip", "<cmd>PasteImage<cr>", desc = "Paste image from clipboard" },
-  --   },
-  -- },
   {
     "duckdm/neowarrior.nvim",
     event = "VeryLazy", -- Loads the plugin lazily to keep startup fast

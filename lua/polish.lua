@@ -4,11 +4,11 @@
 -- This is just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
--- Copilot Keybindings
-vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
-vim.keymap.set('i', '<C-h>', '<Plug>(copilot-accept-line)')
-
 local gfh_actions = require("telescope").extensions.git_file_history.actions
+
+-- Copilot Keybindings
+-- vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
+-- vim.keymap.set('i', '<C-h>', '<Plug>(copilot-accept-line)')
 
 require("telescope").setup({
   -- The rest of your telescope config here
